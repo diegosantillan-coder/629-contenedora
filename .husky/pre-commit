@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo INFO: Se inicializa hook pre commit código estático antes de confirmar el cambio
+
+set +e
+
+npm run lint 2>/dev/null
+if [ $? -ne 0 ]; then
+  echo "ERROR: se ha presentado un error al ejecutar ESLint (npm run lint)"
+  exit 1;
+fi
+
+npm run prettier 2>/dev/null
+if [ $? -ne 0 ]; then
+  echo "ERROR: se ha presentado un error al ejecutar validación del cambio (npm run prettier)"
+  exit 1;
+else
+  git add .
+fi
+
+exit 0;

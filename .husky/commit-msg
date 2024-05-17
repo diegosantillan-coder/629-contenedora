@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo INFO: Se inicializa hook commit message formato antes de confirmar el cambio
+
+set +e
+
+npx --no -- commitlint --edit ${1} 2>/dev/null
+if [ $? -ne 0 ]; then
+  echo "ERROR: se ha presentado un error al ejecutar validación del cambio (npx --no -- commitlint --edit)"
+  exit 1;
+else
+  git add .
+fi
+
+exit 0;
