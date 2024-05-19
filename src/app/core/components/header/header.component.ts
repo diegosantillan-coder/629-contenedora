@@ -37,6 +37,5 @@ export class HeaderComponent {
 
 	toggleSubMenu(index: number): void {
 		this.expandedMenuItems[index] = !this.expandedMenuItems[index];
-		console.log(this.expandedMenuItems[index]);
 	}
 }

@@ -45,13 +45,11 @@ export class BaseInterceptor implements HttpInterceptor {
 				/([^:]\/)\/+/g,
 				'$1'
 			);
-			console.log(url);
 			req = req.clone({ url });
 		}
 
 		return next.handle(req).pipe(
 			finalize(() => {
-				console.log('Base Interceptor');
 				this.loaderService.stopLoader();
 			})
 		);
