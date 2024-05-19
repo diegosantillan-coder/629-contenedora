@@ -1,0 +1,87 @@
+@import '../../../../assets/scss/main';
+
+.header {
+	background: var(--sura-color-brand-primary-1);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.5rem;
+	min-height: 5rem;
+
+	&__logo {
+		max-width: 10rem;
+	}
+
+	&__button {
+		display: block;
+		justify-self: end;
+	}
+
+	&__nav {
+		position: absolute;
+		background: var(--sura-color-brand-primary-2);
+		width: 100%;
+		top: 5.1rem;
+		right: 0;
+		bottom: 0;
+		padding: 1.5rem;
+
+		&--hidden {
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		&--visible {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	&__nav-list {
+		display: grid;
+		list-style-type: none;
+		flex-direction: column;
+		align-items: start;
+		gap: 2rem;
+
+		li {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		li a {
+			text-decoration: none;
+			color: var(--sura-color-brand-primary-1);
+			font-weight: 700;
+		}
+	}
+
+	&__arrow-forward {
+		&--visible {
+			opacity: 0;
+			display: none;
+		}
+	}
+
+	@include from($medium) {
+		&__button {
+			display: none;
+		}
+
+		&__nav {
+			display: block;
+			position: relative;
+			background: var(--sura-color-brand-primary-1);
+			opacity: 1;
+			visibility: visible;
+			li a {
+				color: var(--sura-color-brand-primary-2);
+			}
+		}
+
+		&__nav-list {
+			display: flex;
+			flex-direction: row;
+		}
+	}
+}

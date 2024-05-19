@@ -6,6 +6,7 @@ import {
 	HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LoaderService } from '@core/services/loader.service';
 import { LIST_COOKIE_XSRF_TOKEN } from '@shared/config/cookie.config';
 import { CONFIG_ENVIRONMENT } from '@shared/config/environment.config';
 import { CookieService } from 'ngx-cookie-service';
@@ -18,14 +19,15 @@ export class BaseInterceptor implements HttpInterceptor {
 
 	constructor(
 		private location: Location,
-		private cookieService: CookieService
+		private cookieService: CookieService,
+		private loaderService: LoaderService
 	) {}
 
 	intercept(
 		req: HttpRequest<any>,
 		next: HttpHandler
 	): Observable<HttpEvent<any>> {
-		//this.loaderService.initLoader();
+		this.loaderService.initLoader();
 
 		req = req.clone({
 			headers: req.headers
@@ -50,7 +52,7 @@ export class BaseInterceptor implements HttpInterceptor {
 		return next.handle(req).pipe(
 			finalize(() => {
 				console.log('Base Interceptor');
-				//this.loaderService.stopLoader();
+				this.loaderService.stopLoader();
 			})
 		);
 	}
