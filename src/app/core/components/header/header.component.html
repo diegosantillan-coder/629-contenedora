@@ -1,16 +1,16 @@
 <header class="header">
-	<img class="header__logo" src="assets/images/svg/logo-sura.svg" alt="sura" />
+	<img class="header__logo" src="/assets/images/svg/logo-sura.svg" alt="sura" />
 	<a
 		*ngIf="!menuEsVisible"
 		class="header__button"
 		(click)="menuEsVisible = !menuEsVisible"
-		><img src="assets/icons/menu.svg" alt="" />
+		><img src="/assets/icons/menu.svg" alt="" />
 	</a>
 	<a
 		*ngIf="menuEsVisible"
 		class="header__button"
 		(click)="menuEsVisible = !menuEsVisible"
-		><img src="assets/icons/close.svg" alt="" />
+		><img src="/assets/icons/close.svg" alt="" />
 	</a>
 	<nav
 		class="header__nav"
@@ -29,13 +29,13 @@
 						[ngClass]="{
 							'header__arrow-forward--visible': expandedMenuItems[i]
 						}"
-						src="assets/icons/arrow-forward.svg"
+						src="/assets/icons/arrow-forward.svg"
 						alt="" />
 					<img
 						[ngClass]="{
 							'header__arrow-forward--visible': !expandedMenuItems[i]
 						}"
-						src="assets/icons/arrow-down.svg"
+						src="/assets/icons/arrow-down.svg"
 						alt="" />
 				</li>
 				<ul class="header__nav-list submenu" *ngIf="expandedMenuItems[i]">
