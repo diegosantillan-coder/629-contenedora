@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { UserWayComponent } from '../user-way/user-way.component';
 
 @Component({
@@ -13,26 +13,26 @@ import { UserWayComponent } from '../user-way/user-way.component';
 })
 export class HeaderComponent {
 	menuEsVisible = false;
-
+	constructor(private router: Router) {}
 	menuItems = [
-		{ label: 'Inicio', link: '#' },
+		{ label: 'Inicio', link: '' },
 		{
 			label: 'Productos',
 			subMenu: [
-				{ label: 'Producto 1', link: '#' },
-				{ label: 'Producto 2', link: '#' },
-				{ label: 'Producto 3', link: '#' },
+				{ label: 'Home', link: 'home' },
+				{ label: 'Producto 2', link: 'producto2' },
+				{ label: 'Producto 3', link: 'producto3' },
 			],
 		},
 		{
 			label: 'Servicios',
 			subMenu: [
-				{ label: 'Servicio 1', link: '#' },
-				{ label: 'Servicio 2', link: '#' },
-				{ label: 'Servicio 3', link: '#' },
+				{ label: 'Servicio 1', link: 'servicio1' },
+				{ label: 'Servicio 2', link: 'servicio2' },
+				{ label: 'Servicio 3', link: 'servicio3' },
 			],
 		},
-		{ label: 'Contacto', link: '#' },
+		{ label: 'Contacto', link: 'contacto' },
 	];
 
 	expandedMenuItems: Record<number, boolean> = {};
@@ -43,5 +43,11 @@ export class HeaderComponent {
 
 	hello($event: any): void {
 		console.log($event);
+	}
+
+	navegar(link: string): void {
+		console.log(link);
+		this.router.navigate([link]);
+		this.menuEsVisible = !this.menuEsVisible;
 	}
 }

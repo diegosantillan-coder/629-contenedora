@@ -23,7 +23,12 @@
 		<ul class="header__nav-list">
 			<ng-container *ngFor="let menuItem of menuItems; let i = index">
 				<li *ngIf="!menuItem.subMenu">
-					<a href="#"> {{ menuItem.label }} </a>
+					<a
+						[routerLink]="menuItem.link"
+						(click)="menuEsVisible = !menuEsVisible"
+						href="#">
+						{{ menuItem.label }}
+					</a>
 				</li>
 				<li *ngIf="menuItem.subMenu" (click)="toggleSubMenu(i)">
 					<a href="#"> {{ menuItem.label }} </a>
@@ -42,7 +47,12 @@
 				</li>
 				<ul class="header__nav-list submenu" *ngIf="expandedMenuItems[i]">
 					<li *ngFor="let subMenuItem of menuItem.subMenu">
-						<a [href]="subMenuItem.link">{{ subMenuItem.label }}</a>
+						<a
+							href="#"
+							[routerLink]="subMenuItem.link"
+							(click)="menuEsVisible = !menuEsVisible"
+							>{{ subMenuItem.label }}</a
+						>
 					</li>
 				</ul>
 			</ng-container>
