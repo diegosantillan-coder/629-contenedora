@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { UserWayComponent } from '../user-way/user-way.component';
 
@@ -7,6 +7,7 @@ import { UserWayComponent } from '../user-way/user-way.component';
 	selector: 'app-header',
 	standalone: true,
 	imports: [UserWayComponent, RouterOutlet, RouterModule, CommonModule],
+	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 	templateUrl: './header.component.html',
 	styleUrl: './header.component.scss',
 })
@@ -38,5 +39,9 @@ export class HeaderComponent {
 
 	toggleSubMenu(index: number): void {
 		this.expandedMenuItems[index] = !this.expandedMenuItems[index];
+	}
+
+	hello($event: any): void {
+		console.log($event);
 	}
 }
