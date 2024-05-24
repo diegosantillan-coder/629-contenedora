@@ -29,6 +29,6 @@ export class PortalComponent implements OnInit {
 	}
 
 	skip($event: any): void {
-		console.log($event);
+		const event = $event;
 	}
 }

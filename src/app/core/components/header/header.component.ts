@@ -42,11 +42,10 @@ export class HeaderComponent {
 	}
 
 	hello($event: any): void {
-		console.log($event);
+		const event = $event;
 	}
 
 	navegar(link: string): void {
-		console.log(link);
 		this.router.navigate([link]);
 		this.menuEsVisible = !this.menuEsVisible;
 	}
