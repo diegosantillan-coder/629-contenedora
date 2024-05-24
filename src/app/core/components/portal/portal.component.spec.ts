@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { RouterModule } from '@angular/router';
 import { PortalComponent } from './portal.component';
 
 describe('PortalComponent', () => {
@@ -13,9 +13,7 @@ describe('PortalComponent', () => {
 		await TestBed.configureTestingModule({
 			imports: [
 				PortalComponent,
-				RouterTestingModule.withRoutes([
-					{ path: 'sin-acceso', redirectTo: '' },
-				]),
+				RouterModule.forRoot([]),
 				HttpClientModule,
 				HttpClientTestingModule,
 			],

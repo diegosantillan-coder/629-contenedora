@@ -1,0 +1,25 @@
+.user-way {
+	&__container {
+		display: grid;
+		grid-template-columns: 75% 25%;
+		height: 4rem;
+		background-color: var(--sura-color-neutral-background-4);
+	}
+
+	&__container-text {
+		justify-self: end;
+		align-self: center;
+	}
+
+	&__text-transparent {
+		color: var(--sura-color-brand-second-1);
+		font-weight: 450;
+		display: inline;
+	}
+
+	&__text-accesibility {
+		color: var(--sura-color-brand-second-1);
+		font-weight: 700;
+		display: inline;
+	}
+}

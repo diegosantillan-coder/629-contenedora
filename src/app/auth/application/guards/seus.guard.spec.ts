@@ -1,8 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed, fakeAsync } from '@angular/core/testing';
-import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
+import { Router, RouterModule } from '@angular/router';
 import { UsuarioSeusMock } from '@auth/application/mocks/usuario-seus.mock';
 import { SessionService } from '@auth/application/services/session.service';
 import { Rutas } from '@shared/enums/routes.enum';
@@ -19,9 +18,7 @@ describe('seusGuard', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [
-				RouterTestingModule.withRoutes([
-					{ path: 'sin-acceso', redirectTo: '' },
-				]),
+				RouterModule.forRoot([]),
 				HttpClientModule,
 				HttpClientTestingModule,
 			],

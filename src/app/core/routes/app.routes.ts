@@ -1,3 +1,4 @@
+import { loadRemoteModule } from '@angular-architects/module-federation';
 import { Routes } from '@angular/router';
 import { AccessDeniedComponent } from '@shared/components/access-denied/access-denied.component';
 import { Rutas } from '@shared/enums/routes.enum';
@@ -22,5 +23,14 @@ export const APP_ROUTES: Routes = [
 		title: 'Página no encontrada',
 		pathMatch: 'full',
 		redirectTo: `${PORTAL_MENU.path}/${Rutas.NOT_FOUND}`,
+	},
+	{
+		path: 'home',
+		loadComponent: async () =>
+			loadRemoteModule({
+				type: 'module',
+				remoteEntry: 'http://localhost:4201/remoteEntry.js',
+				exposedModule: './HomeComponent',
+			}).then((m) => m.HomeComponent),
 	},
 ];
