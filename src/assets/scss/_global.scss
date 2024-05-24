@@ -4,3 +4,9 @@
 	box-sizing: border-box;
 	font-family: var(--sura-font-family-base);
 }
+
+body,
+html {
+	height: 100%;
+	margin: 0;
+}

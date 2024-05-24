@@ -1,0 +1,34 @@
+@import 'src/assets/scss/main';
+.pre-home {
+	display: grid;
+	row-gap: 2rem;
+	padding: 1rem;
+	margin-top: 1rem;
+	&__title {
+		color: var(--sura-color-brand-primary-1);
+		font-size: 36px;
+	}
+
+	&__sub-title {
+		color: var(--sura-color-brand-second-1);
+		font-size: 28spx;
+	}
+
+	&__container {
+		display: grid;
+		gap: 2rem;
+	}
+
+	&__cards {
+		height: 50px;
+		border: 1px solid var(--sura-color-brand-second-1);
+	}
+
+	@include from($medium) {
+		padding: 5rem;
+
+		&__container {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+}

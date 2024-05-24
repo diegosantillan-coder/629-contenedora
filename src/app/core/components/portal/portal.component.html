@@ -1,16 +1,22 @@
-<sura-modal
-	src="assets/images/svg/modal.svg"
-	alt="Estamos cambiando para ti"
-	[open]="true"
-	[active]="false"
-	(modal-skip)="skip($event)"
-	(modal-start)="skip($event)">
-	<div slot="header">Estamos cambiando para ti</div>
-	<div slot="body">
-		<p>
-			Hemos mejorado nuestra página y opciones, ahora puedes encontrar lo que
-			necesitas mucho más rápido.
-		</p>
+<div class="container-general">
+	<app-header></app-header>
+	<!-- <sura-modal
+    src="assets/images/svg/modal.svg"
+    alt="Estamos cambiando para ti"
+    [open]="true"
+    [active]="false"
+    (modal-skip)="skip($event)"
+    (modal-start)="skip($event)">
+    <div slot="header">Estamos cambiando para ti</div>
+    <div slot="body">
+      <p>
+        Hemos mejorado nuestra página y opciones, ahora puedes encontrar lo que
+        necesitas mucho más rápido.
+      </p>
+    </div>
+  </sura-modal> -->
+	<div class="main">
+		<router-outlet />
 	</div>
-</sura-modal>
-Portal Component
+	<sura-base-footer></sura-base-footer>
+</div>

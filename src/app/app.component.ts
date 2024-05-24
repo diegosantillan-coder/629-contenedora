@@ -3,13 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { CONFIG_ENVIRONMENT } from '@shared/config/environment.config';
 import { JavaScripts } from '@shared/enums/params.enum';
 import { ConfigEnv } from '@shared/models/config-app.interface';
-import { HeaderComponent } from './core/components/header/header.component';
 import { LoaderComponent } from './core/components/loader/loader.component';
 
 @Component({
 	selector: 'app-root',
 	standalone: true,
-	imports: [RouterOutlet, LoaderComponent, HeaderComponent],
+	imports: [RouterOutlet, LoaderComponent],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.scss',
 })
