@@ -1,4 +1,9 @@
-import { Component, OnInit, inject } from '@angular/core';
+import {
+	CUSTOM_ELEMENTS_SCHEMA,
+	Component,
+	OnInit,
+	inject,
+} from '@angular/core';
 import { SessionService } from '@auth/application/services/session.service';
 import { UsuarioSeus } from '@auth/domain/models/usuario-seus.model';
 
@@ -8,6 +13,7 @@ import { UsuarioSeus } from '@auth/domain/models/usuario-seus.model';
 	imports: [],
 	templateUrl: './portal.component.html',
 	styleUrl: './portal.component.scss',
+	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class PortalComponent implements OnInit {
 	ngOnInit(): void {
@@ -20,5 +26,9 @@ export class PortalComponent implements OnInit {
 		this.sessionService.getUserInfo().subscribe((usuario) => {
 			this.usuario = usuario;
 		});
+	}
+
+	skip($event: any): void {
+		console.log($event);
 	}
 }
