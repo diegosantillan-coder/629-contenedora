@@ -2,23 +2,18 @@
 	"root": true,
 	"parser": "@typescript-eslint/parser",
 	"plugins": ["@typescript-eslint"],
-	"ignorePatterns": ["projects/**/*"],
+	"ignorePatterns": ["*.d.ts"],
 	"rules": {
 		"no-debugger": "error",
 		"no-duplicate-case": "error",
 		"no-duplicate-imports": "error",
 		"max-depth": ["error", 3],
 		"max-nested-callbacks": ["error", 3],
-		"no-console": [
-			"warn",
-			{
-				"allow": ["error", "warn"]
-			}
-		],
+		"no-console": ["warn", { "allow": ["error", "warn"] }],
 		"no-empty": "warn",
 		"no-eq-null": "warn",
 		"no-floating-decimal": "error",
-		"no-magic-numbers": "off",
+		"no-magic-numbers": ["warn", { "ignore": [-1, 0, 1, 2] }],
 		"no-nested-ternary": "warn",
 		"no-new": "error"
 	},
@@ -30,27 +25,27 @@
 				"*.guard.ts",
 				"*.interceptor.ts",
 				"*.module.ts",
+				"*.pipe.ts",
 				"*.service.ts"
 			],
 			"rules": {
-				"max-lines-per-function": ["error", 60]
+				"max-lines-per-function": ["error", 50]
 			}
 		},
 		{
 			"files": ["*.ts"],
 			"parserOptions": {
-				"project": ["tsconfig.json"],
+				"project": ["tsconfig.json", "e2e/tsconfig.json"],
 				"createDefaultProgram": true
 			},
 			"extends": [
 				"plugin:@angular-eslint/recommended",
 				"plugin:@angular-eslint/template/process-inline-templates",
-				"plugin:@typescript-eslint/eslint-recommended",
-				"plugin:prettier/recommended"
+				"plugin:@typescript-eslint/eslint-recommended"
 			],
 			"rules": {
 				"@typescript-eslint/array-type": "warn",
-				"@typescript-eslint/await-thenable": "warn",
+				"@typescript-eslint/await-thenable": "error",
 				"@typescript-eslint/consistent-indexed-object-style": "warn",
 				"@typescript-eslint/consistent-type-definitions": "warn",
 				"@typescript-eslint/explicit-function-return-type": "error",
@@ -65,13 +60,6 @@
 				"@typescript-eslint/no-array-constructor": "error",
 				"@typescript-eslint/no-extra-semi": "error",
 				"@typescript-eslint/no-useless-constructor": "error",
-				"@typescript-eslint/no-magic-numbers": [
-					"error",
-					{
-						"ignoreReadonlyClassProperties": true,
-						"ignore": [-2, -1, 0, 1, 2]
-					}
-				],
 				"@typescript-eslint/naming-convention": [
 					"error",
 					{
@@ -103,20 +91,18 @@
 				"@angular-eslint/no-queries-metadata-property": "error",
 				"@angular-eslint/relative-url-prefix": "error",
 				"@angular-eslint/use-component-selector": "error",
-				"@angular-eslint/directive-selector": [
-					"error",
-					{
-						"type": "attribute",
-						"prefix": "app",
-						"style": "camelCase"
-					}
-				],
 				"@angular-eslint/component-selector": [
 					"error",
 					{
-						"type": "element",
-						"prefix": "app",
-						"style": "kebab-case"
+						"style": "kebab-case",
+						"type": "element"
+					}
+				],
+				"@angular-eslint/directive-selector": [
+					"error",
+					{
+						"style": "camelCase",
+						"type": "attribute"
 					}
 				]
 			}
@@ -125,16 +111,28 @@
 			"files": ["*.html"],
 			"extends": ["plugin:@angular-eslint/template/recommended"],
 			"rules": {
+				"@angular-eslint/template/alt-text": "error",
+				"@angular-eslint/template/valid-aria": "error",
+				"@angular-eslint/template/elements-content": "error",
+				"@angular-eslint/template/table-scope": "error",
 				"@angular-eslint/template/no-positive-tabindex": "error",
 				"@angular-eslint/template/no-negated-async": "error",
 				"@angular-eslint/template/no-duplicate-attributes": "error",
 				"@angular-eslint/template/no-any": "error",
 				"@angular-eslint/template/eqeqeq": "error",
 				"@angular-eslint/template/banana-in-box": "error",
-				"@angular-eslint/template/alt-text": "error",
-				"@angular-eslint/template/valid-aria": "error",
-				"@angular-eslint/template/elements-content": "error",
-				"@angular-eslint/template/table-scope": "error"
+				"@angular-eslint/template/cyclomatic-complexity": [
+					"error",
+					{
+						"maxComplexity": 8
+					}
+				],
+				"@angular-eslint/template/conditional-complexity": [
+					"error",
+					{
+						"maxComplexity": 3
+					}
+				]
 			}
 		}
 	]
