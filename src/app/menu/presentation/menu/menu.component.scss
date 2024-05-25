@@ -1,0 +1,31 @@
+@import 'src/assets/scss/main';
+.menu {
+	list-style-type: none;
+	flex-direction: column;
+	align-items: start;
+	gap: 2rem;
+
+	> li {
+		margin: 0.5em 0;
+		line-height: 3rem;
+	}
+
+	a {
+		text-decoration: none;
+		color: var(--sura-color-brand-primary-1);
+		display: flex;
+		justify-content: space-between;
+		font-weight: 700;
+		cursor: pointer;
+	}
+
+	&__sub-item {
+		color: var(--sura-color-brand-second-1);
+	}
+}
+
+@include from($medium) {
+	.menu {
+		display: none;
+	}
+}

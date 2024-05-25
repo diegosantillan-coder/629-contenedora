@@ -1,12 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
+import { MenuItem } from '@menu/domain/models/menu-item.model';
+import { MenuComponent } from '@menu/presentation/menu/menu.component';
 import { UserWayComponent } from '../user-way/user-way.component';
 
 @Component({
 	selector: 'app-header',
 	standalone: true,
-	imports: [UserWayComponent, RouterOutlet, RouterModule, CommonModule],
+	imports: [
+		UserWayComponent,
+		MenuComponent,
+		RouterOutlet,
+		RouterModule,
+		CommonModule,
+	],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 	templateUrl: './header.component.html',
 	styleUrl: './header.component.scss',
@@ -14,26 +22,7 @@ import { UserWayComponent } from '../user-way/user-way.component';
 export class HeaderComponent {
 	menuEsVisible = false;
 	constructor(private router: Router) {}
-	menuItems = [
-		{ label: 'Inicio', link: '' },
-		{
-			label: 'Productos',
-			subMenu: [
-				{ label: 'Home', link: 'home' },
-				{ label: 'Producto 2', link: 'producto2' },
-				{ label: 'Producto 3', link: 'producto3' },
-			],
-		},
-		{
-			label: 'Servicios',
-			subMenu: [
-				{ label: 'Servicio 1', link: 'servicio1' },
-				{ label: 'Servicio 2', link: 'servicio2' },
-				{ label: 'Servicio 3', link: 'servicio3' },
-			],
-		},
-		{ label: 'Contacto', link: 'contacto' },
-	];
+	menuItems: MenuItem[] = [];
 
 	expandedMenuItems: Record<number, boolean> = {};
 

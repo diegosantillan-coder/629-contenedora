@@ -1,0 +1,24 @@
+<ul class="menu">
+	<li *ngFor="let menuItem of menuItems; let i = index">
+		<a
+			*ngIf="!menuItem.subMenu"
+			[routerLink]="menuItem.link"
+			(click)="closeMenu(menuItem)"
+			>{{ menuItem.label }}</a
+		>
+		<a *ngIf="menuItem.subMenu" (click)="toggleSubMenu(i)">
+			{{ menuItem.label }}
+			<img
+				src="/assets/icons/arrow-down.svg"
+				alt=""
+				*ngIf="!expandedMenuItems[i]" />
+			<img
+				src="/assets/icons/arrow-forward.svg"
+				alt=""
+				*ngIf="expandedMenuItems[i]" />
+		</a>
+		<app-menu
+			*ngIf="menuItem.subMenu && expandedMenuItems[i]"
+			[menuItems]="menuItem.subMenu"></app-menu>
+	</li>
+</ul>

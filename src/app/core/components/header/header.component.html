@@ -1,5 +1,4 @@
 <app-user-way></app-user-way>
-<!-- <sura-base-header titulo="SEGUROS SURA" descripcion="abc abc" /> -->
 <header class="header">
 	<img class="header__logo" src="/assets/images/svg/logo-sura.svg" alt="sura" />
 	<a
@@ -20,7 +19,7 @@
 			'header__nav--visible': menuEsVisible,
 			'header__nav--hidden': !menuEsVisible
 		}">
-		<ul class="header__nav-list">
+		<!-- <ul class="header__nav-list">
 			<ng-container *ngFor="let menuItem of menuItems; let i = index">
 				<li *ngIf="!menuItem.subMenu">
 					<a
@@ -56,14 +55,7 @@
 					</li>
 				</ul>
 			</ng-container>
-		</ul>
+		</ul> -->
+		<app-menu [menuItems]="menuItems"></app-menu>
 	</nav>
 </header>
-<!--
-<sura-dropdown
-	options='["Elemento 1", "Elemento 2", "Elemento 3"]'
-	placeholder="Selecciona una opción"
-	label="Etiqueta"
-	description="Texto de ayuda"
-	(option-selected)="hello($event)" />
--->
