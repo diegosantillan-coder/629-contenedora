@@ -1,7 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import {
+	CUSTOM_ELEMENTS_SCHEMA,
+	Component,
+	OnInit,
+	inject,
+} from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { MenuItem } from '@menu/domain/models/menu-item.model';
+import { MenuRepository } from '@menu/domain/repositories/menu.repository';
+import { MenuRepositoryImpl } from '@menu/infrastructure/repositories/menu.repository.impl';
 import { MenuComponent } from '@menu/presentation/menu/menu.component';
 import { UserWayComponent } from '../user-way/user-way.component';
 
@@ -15,14 +22,19 @@ import { UserWayComponent } from '../user-way/user-way.component';
 		RouterModule,
 		CommonModule,
 	],
+	providers: [{ provide: MenuRepository, useClass: MenuRepositoryImpl }],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 	templateUrl: './header.component.html',
 	styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+	ngOnInit(): void {
+		this.cargarMenu();
+	}
 	menuEsVisible = false;
-	constructor(private router: Router) {}
 	menuItems: MenuItem[] = [];
+	private router = inject(Router);
+	private menuRepository = inject(MenuRepository);
 
 	expandedMenuItems: Record<number, boolean> = {};
 
@@ -37,5 +49,11 @@ export class HeaderComponent {
 	navegar(link: string): void {
 		this.router.navigate([link]);
 		this.menuEsVisible = !this.menuEsVisible;
+	}
+
+	cargarMenu(): void {
+		this.menuRepository.getMenu().subscribe((menu) => {
+			this.menuItems = menu;
+		});
 	}
 }

@@ -17,7 +17,5 @@ export class MenuComponent {
 	toggleSubMenu(index: number): void {
 		this.expandedMenuItems[index] = !this.expandedMenuItems[index];
 	}
-	closeMenu(menuItem: MenuItem): void {
-		console.log(menuItem);
-	}
+	closeMenu(menuItem: MenuItem): void {}
 }
