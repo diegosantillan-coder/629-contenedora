@@ -12,4 +12,11 @@ export class MenuRepositoryImpl implements MenuRepository {
 	getMenu(): Observable<MenuItem[]> {
 		return this.menuService.getMenu();
 	}
+
+	setMenuVisible(isVisible: boolean): void {
+		this.menuService.setMenuVisible(isVisible);
+	}
+	getMenuVisible(): Observable<boolean> {
+		return this.menuService.getMenuVisible();
+	}
 }

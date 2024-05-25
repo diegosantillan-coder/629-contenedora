@@ -12,16 +12,21 @@
 
 	a {
 		text-decoration: none;
-		color: var(--sura-color-brand-primary-1);
 		display: flex;
 		justify-content: space-between;
 		font-weight: 700;
 		cursor: pointer;
 	}
 
-	&__sub-item {
+	&-item {
 		color: var(--sura-color-brand-second-1);
+		line-height: 2rem;
+		padding-left: 1rem;
 	}
+}
+
+.submenu-item {
+	color: var(--sura-color-brand-primary-1);
 }
 
 @include from($medium) {

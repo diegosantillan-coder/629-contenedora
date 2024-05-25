@@ -4,9 +4,19 @@
 			*ngIf="!menuItem.subMenu"
 			[routerLink]="menuItem.link"
 			(click)="closeMenu(menuItem)"
+			[ngClass]="{
+				'menu-item': !menuItem.subMenu,
+				'submenu-item': menuItem.subMenu
+			}"
 			>{{ menuItem.label }}</a
 		>
-		<a *ngIf="menuItem.subMenu" (click)="toggleSubMenu(i)">
+		<a
+			*ngIf="menuItem.subMenu"
+			(click)="toggleSubMenu(i)"
+			[ngClass]="{
+				'menu-item': !menuItem.subMenu || menuItem.type === 'child',
+				'submenu-item': menuItem.subMenu && menuItem.type === 'parent'
+			}">
 			{{ menuItem.label }}
 			<img
 				src="/assets/icons/arrow-down.svg"

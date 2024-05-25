@@ -1,16 +1,10 @@
 <app-user-way></app-user-way>
 <header class="header">
 	<img class="header__logo" src="/assets/images/svg/logo-sura.svg" alt="sura" />
-	<a
-		*ngIf="!menuEsVisible"
-		class="header__button"
-		(click)="menuEsVisible = !menuEsVisible"
+	<a *ngIf="!menuEsVisible" class="header__button" (click)="toggleMenu()"
 		><img src="/assets/icons/menu.svg" alt="" />
 	</a>
-	<a
-		*ngIf="menuEsVisible"
-		class="header__button"
-		(click)="menuEsVisible = !menuEsVisible"
+	<a *ngIf="menuEsVisible" class="header__button" (click)="toggleMenu()"
 		><img src="/assets/icons/close.svg" alt="" />
 	</a>
 	<nav

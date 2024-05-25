@@ -36,10 +36,10 @@ export class HeaderComponent implements OnInit {
 	private router = inject(Router);
 	private menuRepository = inject(MenuRepository);
 
-	expandedMenuItems: Record<number, boolean> = {};
-
-	toggleSubMenu(index: number): void {
-		this.expandedMenuItems[index] = !this.expandedMenuItems[index];
+	constructor() {
+		this.menuRepository
+			.getMenuVisible()
+			.subscribe((visible) => (this.menuEsVisible = visible));
 	}
 
 	hello($event: any): void {
@@ -49,6 +49,11 @@ export class HeaderComponent implements OnInit {
 	navegar(link: string): void {
 		this.router.navigate([link]);
 		this.menuEsVisible = !this.menuEsVisible;
+	}
+
+	toggleMenu(): void {
+		this.menuEsVisible = !this.menuEsVisible;
+		this.menuRepository.setMenuVisible(this.menuEsVisible);
 	}
 
 	cargarMenu(): void {
