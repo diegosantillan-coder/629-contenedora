@@ -1,11 +1,11 @@
-<ul class="menu">
-	<li *ngFor="let menuItem of menuDesktopItems; let i = index">
+<ul class="menu-mobile">
+	<li *ngFor="let menuItem of menuItems; let i = index">
 		<a
 			*ngIf="!menuItem.subMenu"
 			[routerLink]="menuItem.link"
 			(click)="closeMenu(menuItem)"
 			[ngClass]="{
-				'menu-item': !menuItem.subMenu,
+				'menu-mobile-item': !menuItem.subMenu,
 				'submenu-item': menuItem.subMenu
 			}"
 			>{{ menuItem.label }}</a
@@ -14,15 +14,15 @@
 			*ngIf="menuItem.subMenu"
 			(click)="toggleSubMenu(i)"
 			[ngClass]="{
-				'menu-item': !menuItem.subMenu || menuItem.type === 'child',
+				'menu-mobile-item': !menuItem.subMenu || menuItem.type === 'child',
 				'submenu-item': menuItem.subMenu && menuItem.type === 'parent'
 			}">
 			{{ menuItem.label }}
 			<a *ngIf="!expandedMenuItems[i]" class="sura-icon-small-row-right"> </a>
 			<a *ngIf="expandedMenuItems[i]" class="sura-icon-forward-down-arrow"> </a>
 		</a>
-		<!-- <app-menu
+		<app-menu-mobile
 			*ngIf="menuItem.subMenu && expandedMenuItems[i]"
-			[menuDesktopItems]="menuItem.subMenu"></app-menu> -->
+			[menuItems]="menuItem.subMenu"></app-menu-mobile>
 	</li>
 </ul>

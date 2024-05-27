@@ -1,12 +1,12 @@
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MenuItem } from '@menu/domain/models/menu-item.model';
 import { MenuRepository } from '@menu/domain/repositories/menu.repository';
 import { MenuRepositoryImpl } from '@menu/infrastructure/repositories/menu.repository.impl';
 
 @Component({
-	selector: 'app-menu',
+	selector: 'app-menu-mobile',
 	standalone: true,
 	imports: [NgFor, NgIf, NgClass, RouterModule],
 	providers: [
@@ -15,25 +15,24 @@ import { MenuRepositoryImpl } from '@menu/infrastructure/repositories/menu.repos
 			useClass: MenuRepositoryImpl,
 		},
 	],
-	templateUrl: './menu.component.html',
-	styleUrl: './menu.component.scss',
+	templateUrl: './menu-mobile.component.html',
+	styleUrl: './menu-mobile.component.scss',
 })
-export class MenuComponent implements OnChanges {
-	@Input() menuDesktopItems: MenuItem[] = [];
+export class MenuMobileComponent {
+	@Input() menuItems: MenuItem[] = [];
+	@Input() menuDesktopItems: MenuItem[] | undefined = [];
 	expandedMenuItems: boolean[] = [];
 
 	constructor(private menuRepository: MenuRepositoryImpl) {}
 
 	ngOnChanges(changes: SimpleChanges): void {
-		if (changes['menuDesktopItems']) {
-			this.expandedMenuItems = new Array(this.menuDesktopItems.length).fill(
-				false
-			);
+		if (changes['menuItems']) {
+			this.expandedMenuItems = new Array(this.menuItems.length).fill(false);
 		}
 	}
 
 	toggleSubMenu(index: number): void {
-		this.menuDesktopItems[index];
+		this.menuItems[index];
 		this.expandedMenuItems = this.expandedMenuItems.map((_, i) =>
 			i === index ? !this.expandedMenuItems[i] : false
 		);

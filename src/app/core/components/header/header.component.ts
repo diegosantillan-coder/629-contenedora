@@ -9,6 +9,7 @@ import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { MenuItem } from '@menu/domain/models/menu-item.model';
 import { MenuRepository } from '@menu/domain/repositories/menu.repository';
 import { MenuRepositoryImpl } from '@menu/infrastructure/repositories/menu.repository.impl';
+import { MenuMobileComponent } from '@menu/presentation/menu-mobile/menu-mobile.component';
 import { MenuComponent } from '@menu/presentation/menu/menu.component';
 import { UserWayComponent } from '../user-way/user-way.component';
 
@@ -18,6 +19,7 @@ import { UserWayComponent } from '../user-way/user-way.component';
 	imports: [
 		UserWayComponent,
 		MenuComponent,
+		MenuMobileComponent,
 		RouterOutlet,
 		RouterModule,
 		CommonModule,
@@ -33,6 +35,7 @@ export class HeaderComponent implements OnInit {
 	}
 	menuEsVisible = false;
 	menuItems: MenuItem[] = [];
+	menuDesktopItems: MenuItem[] = [];
 	private router = inject(Router);
 	private menuRepository = inject(MenuRepository);
 
@@ -59,6 +62,44 @@ export class HeaderComponent implements OnInit {
 	cargarMenu(): void {
 		this.menuRepository.getMenu().subscribe((menu) => {
 			this.menuItems = menu;
+			this.cargarMenuDesktop([...menu]);
 		});
+	}
+
+	cargarMenuDesktop(menuItems: MenuItem[]): void {
+		if (menuItems) {
+			const menuItemsOrder = this.sortMenuItems(menuItems);
+			const itemsSingle = this.filtrarSingleItems(menuItemsOrder);
+			const itemsGrouped = this.filtrarGroupedItems(menuItemsOrder);
+
+			this.menuDesktopItems = itemsSingle;
+			this.menuDesktopItems.push(
+				this.agruparGroupedItems('Otras Opciones', itemsGrouped)
+			);
+		}
+	}
+
+	sortMenuItems(menuItems: MenuItem[]): MenuItem[] {
+		return menuItems.sort(
+			(a, b) =>
+				(a.order ?? Number.MAX_SAFE_INTEGER) -
+				(b.order ?? Number.MAX_SAFE_INTEGER)
+		);
+	}
+
+	filtrarSingleItems(menuItems: MenuItem[]): MenuItem[] {
+		return menuItems.filter((menuItem) => !menuItem.grouped);
+	}
+
+	filtrarGroupedItems(menuItems: MenuItem[]): MenuItem[] {
+		return menuItems.filter((menuItem) => menuItem.grouped);
+	}
+
+	agruparGroupedItems(label: string, menuItems: MenuItem[]): MenuItem {
+		return {
+			label: label,
+			subMenu: menuItems,
+			type: 'parent',
+		};
 	}
 }

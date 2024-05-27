@@ -6,6 +6,8 @@ export const menuMock: MenuItem[] = [
 		link: 'home',
 		subMenu: [],
 		type: 'parent',
+		order: 8,
+		grouped: false,
 	},
 	{
 		label: 'Salud',
@@ -49,6 +51,8 @@ export const menuMock: MenuItem[] = [
 			},
 		],
 		type: 'parent',
+		order: 1,
+		grouped: false,
 	},
 	{
 		label: 'Vida',
@@ -82,6 +86,8 @@ export const menuMock: MenuItem[] = [
 			},
 		],
 		type: 'parent',
+		order: 2,
+		grouped: false,
 	},
 	{
 		label: 'Pagos SURA',
@@ -95,25 +101,35 @@ export const menuMock: MenuItem[] = [
 			{ label: 'Medios de pago', link: 'medios-de-pago', type: 'child' },
 		],
 		type: 'parent',
+		order: 3,
+		grouped: true,
 	},
 	{
 		label: 'Reclamaciones y reembolsos',
 		subMenu: [],
 		type: 'parent',
+		order: 4,
+		grouped: true,
 	},
 	{
 		label: 'Documentos y Certificados',
 		subMenu: [],
 		type: 'parent',
+		order: 5,
+		grouped: true,
 	},
 	{
 		label: 'Buscador',
 		subMenu: [],
 		type: 'parent',
+		order: 6,
+		grouped: true,
 	},
 	{
 		label: 'Ayuda FAQ',
 		subMenu: [],
 		type: 'parent',
+		order: 7,
+		grouped: true,
 	},
 ];

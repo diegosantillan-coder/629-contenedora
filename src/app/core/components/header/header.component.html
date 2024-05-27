@@ -13,43 +13,7 @@
 			'header__nav--visible': menuEsVisible,
 			'header__nav--hidden': !menuEsVisible
 		}">
-		<!-- <ul class="header__nav-list">
-			<ng-container *ngFor="let menuItem of menuItems; let i = index">
-				<li *ngIf="!menuItem.subMenu">
-					<a
-						[routerLink]="menuItem.link"
-						(click)="menuEsVisible = !menuEsVisible"
-						href="#">
-						{{ menuItem.label }}
-					</a>
-				</li>
-				<li *ngIf="menuItem.subMenu" (click)="toggleSubMenu(i)">
-					<a href="#"> {{ menuItem.label }} </a>
-					<img
-						[ngClass]="{
-							'header__arrow-forward--visible': expandedMenuItems[i]
-						}"
-						src="/assets/icons/arrow-forward.svg"
-						alt="" />
-					<img
-						[ngClass]="{
-							'header__arrow-forward--visible': !expandedMenuItems[i]
-						}"
-						src="/assets/icons/arrow-down.svg"
-						alt="" />
-				</li>
-				<ul class="header__nav-list submenu" *ngIf="expandedMenuItems[i]">
-					<li *ngFor="let subMenuItem of menuItem.subMenu">
-						<a
-							href="#"
-							[routerLink]="subMenuItem.link"
-							(click)="menuEsVisible = !menuEsVisible"
-							>{{ subMenuItem.label }}</a
-						>
-					</li>
-				</ul>
-			</ng-container>
-		</ul> -->
-		<app-menu [menuItems]="menuItems"></app-menu>
+		<app-menu [menuDesktopItems]="menuDesktopItems"></app-menu>
+		<app-menu-mobile [menuItems]="menuItems"></app-menu-mobile>
 	</nav>
 </header>
