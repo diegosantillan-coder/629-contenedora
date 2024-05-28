@@ -21,9 +21,6 @@
 			<a *ngIf="!expandedMenuItems[i]" class="sura-icon-small-row-right"> </a>
 			<a *ngIf="expandedMenuItems[i]" class="sura-icon-forward-down-arrow"> </a>
 		</a>
-		<!-- <app-menu
-			*ngIf="menuItem.subMenu && expandedMenuItems[i]"
-			[menuDesktopItems]="menuItem.subMenu"></app-menu> -->
 		<app-menu-section
 			*ngIf="menuItem.subMenu && expandedMenuItems[i]"
 			[menuDesktopItems]="menuItem.subMenu">
