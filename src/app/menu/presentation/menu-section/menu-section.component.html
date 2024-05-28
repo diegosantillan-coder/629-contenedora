@@ -9,14 +9,11 @@
 			<div (click)="toggleSubMenu(i)">
 				{{ menuItem.label }}
 			</div>
-			<div *ngIf="menuItem.subMenu">
-				<div *ngIf="menuItem.subMenu && expandedMenuItems[i]">
-					<div *ngFor="let menuItem of menuItem.subMenu">
-						{{ menuItem.label }}
-					</div>
-				</div>
-			</div>
 		</div>
-		<div></div>
+	</div>
+	<div *ngIf="selectedSubMenu">
+		<div *ngFor="let subMenuItem of selectedSubMenu">
+			{{ subMenuItem.label }}
+		</div>
 	</div>
 </section>

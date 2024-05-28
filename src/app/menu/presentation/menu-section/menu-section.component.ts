@@ -12,6 +12,7 @@ import { MenuItem } from '@menu/domain/models/menu-item.model';
 export class MenuSectionComponent {
 	@Input() menuDesktopItems: MenuItem[] = [];
 	expandedMenuItems: boolean[] = [];
+	selectedSubMenu: MenuItem[] | null = null;
 
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes['menuDesktopItems']) {
@@ -21,7 +22,13 @@ export class MenuSectionComponent {
 		}
 	}
 	toggleSubMenu(index: number): void {
-		console.log(index);
-		this.expandedMenuItems[index] = !this.expandedMenuItems[index];
+		this.expandedMenuItems = this.expandedMenuItems.map((_, i) =>
+			i === index ? !this.expandedMenuItems[i] : false
+		);
+		this.selectedSubMenu = this.expandedMenuItems[index]
+			? this.menuDesktopItems[index].subMenu || null
+			: null;
+
+		console.log(this.selectedSubMenu);
 	}
 }
