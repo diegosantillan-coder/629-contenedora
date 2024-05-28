@@ -1,0 +1,18 @@
+<section class="menu-section">
+	<div class="menu-section__image">
+		<img src="assets/images/svg/health.svg" alt="imagen" />
+	</div>
+	<div class="menu-section__container-items">
+		<div
+			*ngFor="let menuItem of menuDesktopItems; let i = index"
+			class="menu-section__items">
+			<div *ngIf="!menuItem.subMenu">
+				{{ menuItem.label }}
+			</div>
+			<div *ngIf="menuItem.subMenu" (click)="toggleSubMenu(i)">
+				{{ menuItem.label }}
+			</div>
+		</div>
+		<div></div>
+	</div>
+</section>

@@ -24,5 +24,9 @@
 		<!-- <app-menu
 			*ngIf="menuItem.subMenu && expandedMenuItems[i]"
 			[menuDesktopItems]="menuItem.subMenu"></app-menu> -->
+		<app-menu-section
+			*ngIf="menuItem.subMenu && expandedMenuItems[i]"
+			[menuDesktopItems]="menuItem.subMenu">
+		</app-menu-section>
 	</li>
 </ul>

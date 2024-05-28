@@ -4,11 +4,12 @@ import { RouterModule } from '@angular/router';
 import { MenuItem } from '@menu/domain/models/menu-item.model';
 import { MenuRepository } from '@menu/domain/repositories/menu.repository';
 import { MenuRepositoryImpl } from '@menu/infrastructure/repositories/menu.repository.impl';
+import { MenuSectionComponent } from '@menu/presentation/menu-section/menu-section.component';
 
 @Component({
 	selector: 'app-menu',
 	standalone: true,
-	imports: [NgFor, NgIf, NgClass, RouterModule],
+	imports: [NgFor, NgIf, NgClass, RouterModule, MenuSectionComponent],
 	providers: [
 		{
 			provide: MenuRepository,

@@ -1,0 +1,28 @@
+@import 'src/assets/scss/main';
+.menu-section {
+	display: none;
+	position: fixed;
+	grid-template-columns: repeat(3, 1fr);
+	margin-top: 3.2rem;
+	left: 0;
+	width: 100%;
+	height: auto;
+	border: none;
+	background-color: var(--sura-color-brand-primary-2);
+
+	&__image {
+		max-width: 50px;
+		margin-left: 7rem;
+	}
+
+	&__items {
+		color: var(--sura-color-brand-primary-1);
+		font-weight: 700;
+	}
+}
+
+@include from($medium) {
+	.menu-section {
+		display: grid;
+	}
+}
